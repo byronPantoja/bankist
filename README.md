@@ -6,3 +6,9 @@ Project Goals
   - working with the DOM
   - organizing an app project
   - working with arrays, methods, functions etc...
+    - methods:
+      - map, filter, reduce
+
+
+Notes
+----------------
