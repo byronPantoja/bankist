@@ -80,16 +80,18 @@ const displayMovements = (movements) => {
 displayMovements(account1.movements)
 
   //computing user name
+const createUsernames = (accts) => {
+  accts.forEach((acct) => {
+    acct.username = acct.owner
+    .toLowerCase()
+    .split(' ')
+    .map(name => name[0])
+    .join('');
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
 
-const user = 'Steven Thomas Williams';
-
-const username = user
-  .toLowerCase()
-  .split(' ')
-  .map(name => name[0])
-  .join('');
-
-console.log(username);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -135,6 +137,5 @@ for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
 console.log(withdrawalFor);
 
 // balance
-
-const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+const balance = movements.reduce((acc, cur) => acc + cur, 0);
 console.log(balance);
