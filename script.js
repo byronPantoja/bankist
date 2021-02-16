@@ -70,7 +70,7 @@ const displayMovements = (movements) => {
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${i} ${type}</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
       </div>
       `;
     
@@ -85,6 +85,21 @@ const calcDisplayBalance = (movements) => {
 labelBalance.textContent = `${balance}€`;
 };
 calcDisplayBalance(account1.movements);
+
+// Display Summaries
+const calcDisplaySummary = (movements) => {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0)
+  labelSumIn.textContent = `${incomes}€`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0)
+    labelSumOut.textContent = `${out}€`;
+};
+calcDisplaySummary(account1.movements);
+
 
 //computing user name
 const createUsernames = (accts) => {
