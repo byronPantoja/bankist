@@ -79,6 +79,17 @@ const displayMovements = (movements) => {
 };
 displayMovements(account1.movements)
 
+  //computing user name
+
+const user = 'Steven Thomas Williams';
+
+const username = user
+  .toLowerCase()
+  .split(' ')
+  .map(name => name[0])
+  .join('');
+
+console.log(username);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -108,3 +119,4 @@ const movementsUSD = movements.map(mov => mov + eurToUsd);
   );
 
   console.log(movementsDescriptions);
+
