@@ -79,7 +79,14 @@ const displayMovements = (movements) => {
 };
 displayMovements(account1.movements)
 
-  //computing user name
+// calc balance
+const calcDisplayBalance = (movements) => {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+labelBalance.textContent = `${balance}€`;
+};
+calcDisplayBalance(account1.movements);
+
+//computing user name
 const createUsernames = (accts) => {
   accts.forEach((acct) => {
     acct.username = acct.owner
@@ -90,52 +97,60 @@ const createUsernames = (accts) => {
   });
 };
 createUsernames(accounts);
-console.log(accounts);
+
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-// LECTURES
+// // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-  ['PHP', 'Philipine Peso']
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+//   ['PHP', 'Philipine Peso']
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-/////////////////////////////////////////////////
-const eurToUsd = 1.1;
+// /////////////////////////////////////////////////
+// const eurToUsd = 1.1;
 
-const movementsUSD = movements.map(mov => mov + eurToUsd);
+// const movementsUSD = movements.map(mov => mov + eurToUsd);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 
-const movementsDescriptions = movements.map((mov, i) => 
-`Movement ${i + 1}; You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
-);
+// const movementsDescriptions = movements.map((mov, i) => 
+// `Movement ${i + 1}; You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+// );
 
-console.log(movementsDescriptions);
+// console.log(movementsDescriptions);
 
-// deposits
-const deposits = movements.filter(mov => mov > 0);
-const depositsFor = [];
-for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+// // deposits
+// const deposits = movements.filter(mov => mov > 0);
+// const depositsFor = [];
+// for (const mov of movements) if (mov > 0) depositsFor.push(mov);
 
-console.log(depositsFor);
+// console.log(depositsFor);
 
-// withdrawals
-const withdrawals = movements.filter(mov => mov < 0);
-const withdrawalFor = [];
-for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
+// // withdrawals
+// const withdrawals = movements.filter(mov => mov < 0);
+// const withdrawalFor = [];
+// for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
 
-console.log(withdrawalFor);
+// console.log(withdrawalFor);
 
-// balance
-const balance = movements.reduce((acc, cur) => acc + cur, 0);
-console.log(balance);
+// // balance
+// const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// console.log(balance);
+
+// // chaining methods
+// const totalDepositsUSD = movements
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * eurToUsd)
+//   .reduce((acc, mov) => acc + mov, 0);
+// console.log(totalDepositsUSD);

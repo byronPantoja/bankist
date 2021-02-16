@@ -12,4 +12,5 @@ Project Goals
 
 Notes
 ----------------
-### .map
+##### Chaining Methods
+- you can only chain method after another one if the first one returns an array
