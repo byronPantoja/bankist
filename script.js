@@ -133,3 +133,8 @@ const withdrawalFor = [];
 for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
 
 console.log(withdrawalFor);
+
+// balance
+
+const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+console.log(balance);
