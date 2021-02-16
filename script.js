@@ -108,15 +108,28 @@ const eurToUsd = 1.1;
 
 const movementsUSD = movements.map(mov => mov + eurToUsd);
 
-  console.log(movements);
-  console.log(movementsUSD);
+console.log(movements);
+console.log(movementsUSD);
 
-  const movementsUSDfor = [];
-  for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 
-  const movementsDescriptions = movements.map((mov, i) => 
-  `Movement ${i + 1}; You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
-  );
+const movementsDescriptions = movements.map((mov, i) => 
+`Movement ${i + 1}; You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+);
 
-  console.log(movementsDescriptions);
+console.log(movementsDescriptions);
 
+// deposits
+const deposits = movements.filter(mov => mov > 0);
+const depositsFor = [];
+for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+
+console.log(depositsFor);
+
+// withdrawals
+const withdrawals = movements.filter(mov => mov < 0);
+const withdrawalFor = [];
+for (const mov of movements) if (mov < 0) withdrawalFor.push(mov);
+
+console.log(withdrawalFor);
