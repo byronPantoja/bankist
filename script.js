@@ -126,12 +126,20 @@ let currentAccount;
 btnLogin.addEventListener('click', (e) => {
   e.preventDefault();
 
-currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+    );
+    console.log(currentAccount);
 
-console.log(currentAccount);
-
-if (currentAccount?.pin === Number(inputLoginPin.value))
-console.log('Loginb')
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // display UI message
+    labelWelcome.textContent = `Weclome back, ${currentAccount.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100;
+    // display movements
+    // display balance
+    // display summary
+  }
+  console.log('Login')
 });
 
 /////////////////////////////////////////////////
