@@ -176,6 +176,9 @@ btnTransfer.addEventListener('click', (e) => {
     updateUI(currentAccount);
   }
 });
+
+btnClose.addEventListener('click', (e) => {
+  e.preventDefault();
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // // LECTURES
