@@ -79,9 +79,9 @@ const displayMovements = (movements) => {
 };
 
 // calc balance
-const calcDisplayBalance = (movements) => {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = (acc) => {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+labelBalance.textContent = `${acc.balance}€`;
 };
 
 // Display Summaries
@@ -143,7 +143,7 @@ btnLogin.addEventListener('click', (e) => {
     displayMovements(currentAccount.movements);
 
     // display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
 
     // display summary
     calcDisplaySummary(currentAccount);
@@ -151,6 +151,23 @@ btnLogin.addEventListener('click', (e) => {
   console.log('Login')
 });
 
+btnTransfer.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+  const recieverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+    console.log(amount, recieverAcc);
+  if (
+    amount > 0 && recieverAcc &&
+    currentAccount.balance >= amount && recieverAcc?.username !== currentAccount.username
+    ) {
+    // doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+  }
+});
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // // LECTURES
